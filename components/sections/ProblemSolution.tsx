@@ -33,7 +33,7 @@ export function ProblemSolution() {
               The Problem
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-brand-green mt-3 mb-5 leading-tight">
-              Your competitors are moving — and you're finding out too late.
+              Your competitors are moving — and you&apos;re finding out too late.
             </h2>
             <p className="text-gray-600 text-lg leading-relaxed mb-5">
               By the time your team pieces together competitor moves from scattered news alerts,
