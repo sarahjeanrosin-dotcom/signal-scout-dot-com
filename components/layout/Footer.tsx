@@ -3,7 +3,7 @@ import { Logo } from '@/components/ui/Logo'
 
 const footerLinks = [
   { label: 'Pricing', href: '#pricing' },
-  { label: 'Login', href: '#login' },
+  { label: 'Login', href: 'https://www.signal-scout-app.co/signin?next=%2F' },
 ]
 
 export function Footer() {
