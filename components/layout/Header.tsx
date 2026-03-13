@@ -9,8 +9,8 @@ import { Logo } from '@/components/ui/Logo'
  * menus are generated from this single array.
  */
 const navLinks = [
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Login', href: 'https://www.signal-scout-app.co/signin?next=%2F' },
+  { label: 'Pricing', href: '#pricing', external: false },
+  { label: 'Login', href: 'https://www.signal-scout-app.co/signin?next=%2F', external: true },
 ]
 
 export function Header() {
@@ -30,15 +30,25 @@ export function Header() {
 
           {/* Desktop navigation */}
           <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-150"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.external ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-150"
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-150"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
             <Link
               href="#get-started"
               className="bg-brand-orange hover:brightness-90 text-white text-sm font-semibold px-4 py-2 rounded-md transition-[filter] duration-150"
@@ -90,16 +100,27 @@ export function Header() {
             aria-label="Mobile navigation"
           >
             <div className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-white/80 hover:text-white font-medium py-2 px-2 rounded-md hover:bg-white/10 transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.external ? (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-white/80 hover:text-white font-medium py-2 px-2 rounded-md hover:bg-white/10 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-white/80 hover:text-white font-medium py-2 px-2 rounded-md hover:bg-white/10 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )
+              )}
               <div className="pt-3 mt-1 border-t border-white/10">
                 <Link
                   href="#get-started"

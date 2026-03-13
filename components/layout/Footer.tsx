@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { Logo } from '@/components/ui/Logo'
 
 const footerLinks = [
-  { label: 'Pricing', href: '#pricing' },
-  { label: 'Login', href: 'https://www.signal-scout-app.co/signin?next=%2F' },
+  { label: 'Pricing', href: '#pricing', external: false },
+  { label: 'Login', href: 'https://www.signal-scout-app.co/signin?next=%2F', external: true },
 ]
 
 export function Footer() {
@@ -26,12 +26,21 @@ export function Footer() {
             <ul className="flex gap-6">
               {footerLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-white/60 hover:text-white text-sm transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      className="text-white/60 hover:text-white text-sm transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-white/60 hover:text-white text-sm transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
